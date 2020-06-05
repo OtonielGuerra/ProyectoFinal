@@ -1,0 +1,51 @@
+<Window x:Class="ProyectoFinal.View.AlumnoView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProyectoFinal"
+        mc:Ignorable="d"
+        Title="Ventana Alumno" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <DataGrid SelectedItem="{Binding ElementoSeleccionados}" Grid.Row = "0" ItemsSource="{Binding ListaAlumno}" 
+            CanUserAddRows="False" ColumnWidth="*" AutoGenerateColumns="False" Grid.ColumnSpan="2">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Carne}" Header="Carné" IsReadOnly="True" />
+                <DataGridTextColumn Binding="{Binding Apellidos}" Header="Apellidos" IsReadOnly="True" />
+                <DataGridTextColumn Binding="{Binding Nombres}" Header="Nombres" IsReadOnly="True" />
+                <DataGridTextColumn Binding="{Binding Email}" Header="Email" IsReadOnly="True" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <!-- <Label Grid.Row="1" Grid.Column="0" Content="Carné"/>
+        <TextBox IsReadOnly = "{Binding Carne}" Grid.Row="1" Grid.Column="1" Text="{Binding ElementoSeleccionados.Carne}"></TextBox>
+        <Label Grid.Row="2" Grid.Column="0" Content="Apellidos"/>
+        <TextBox IsReadOnly = "{Binding Casilla}" Grid.Row="2" Grid.Column="1" Text="{Binding ElementoSeleccionados.Apellidos}"></TextBox>
+        <Label Grid.Row="3" Grid.Column="0" Content="Nombres"/>
+        <TextBox IsReadOnly = "{Binding Casilla}" Grid.Row="3" Grid.Column="1" Text="{Binding ElementoSeleccionados.Nombres}"></TextBox>
+        <Label Grid.Row="4" Grid.Column="0" Content="Fecha Nacimiento"/>
+        <DatePicker IsEnabled = "{Binding Casilla}" Grid.Row="4" Grid.Column="1" SelectedDate="{Binding ElementoSeleccionados.FechaNacimiento}"/>
+
+        <StackPanel Grid.Row="5" Grid.ColumnSpan="2" Orientation="Horizontal" Margin="10" HorizontalAlignment="Center">
+            <Button IsEnabled = "{Binding Nuevo}" Margin="10" Padding="5"  Content="Nuevo" Command="{Binding Instancia}" CommandParameter="Nuevo"/>
+            <Button IsEnabled = "{Binding Modificar}" Margin="10" Padding="5" Content="Modificar" Command="{Binding Instancia}" CommandParameter="Modificar"/>
+            <Button IsEnabled = "{Binding Eliminar}" Margin="10" Padding="5" Content="Eliminar" Command="{Binding Instancia}" CommandParameter="Eliminar"/>
+            <Button IsEnabled = "{Binding Guardar}" Margin="10" Padding="5" Content="Guardar" Command="{Binding Instancia}" CommandParameter="Guardar"/>
+            <Button IsEnabled = "{Binding Cancelar}" Margin="10" Padding="5" Content="Cancelar" Command="{Binding Instancia}" CommandParameter="Cancelar"/>
+        </StackPanel> -->
+    </Grid>
+</Window>

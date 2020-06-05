@@ -2,6 +2,7 @@ using System;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Input;
+using ProyectoFinal.View;
 
 namespace ProyectoFinal.ModelView
 {
@@ -33,7 +34,10 @@ namespace ProyectoFinal.ModelView
 
         public void Execute(object parameter)
         {
-            MessageBox.Show(parameter.ToString());
+            if (parameter.Equals("Alumno"))
+            {
+                new AlumnoView().ShowDialog();
+            }
         }
         public event PropertyChangedEventHandler PropertyChanged;
         public void NotificarCambio(string propiedad)

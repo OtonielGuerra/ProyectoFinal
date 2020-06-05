@@ -53,3 +53,5 @@ C:\Users\Otto Guerra\Downloads\Sábados ASP\ProyectoFinal\bin\Debug\netcoreapp3.
 C:\Users\Otto Guerra\Downloads\Sábados ASP\ProyectoFinal\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\Otto Guerra\Downloads\Sábados ASP\ProyectoFinal\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\Otto Guerra\Downloads\Sábados ASP\ProyectoFinal\obj\Debug\netcoreapp3.1\ProyectoFinal.csproj.CopyComplete
+C:\Users\Otto Guerra\Downloads\Sábados ASP\ProyectoFinal\obj\Debug\netcoreapp3.1\View\AlumnoView.g.cs
+C:\Users\Otto Guerra\Downloads\Sábados ASP\ProyectoFinal\obj\Debug\netcoreapp3.1\View\AlumnoView.baml

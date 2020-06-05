@@ -10,11 +10,9 @@ namespace ProyectoFinal.DataContext
         public ProyectoFinalDB(DbContextOptions<ProyectoFinalDB> options) 
             : base(options) 
         {
-            
         }
         public ProyectoFinalDB()
         {
-            
         }
         public DbSet<Alumno> Alumnos {get; set;}
 
