@@ -1,15 +1,14 @@
-<Window x:Class="ProyectoFinal.View.AlumnoView"
+<Window x:Class="ProyectoFinal.View.SalonView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoFinal"
         mc:Ignorable="d"
-        Title="Ventana Alumno" Height="450" Width="800">
+        Title="Ventana Salón" Height="450" Width="800">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="100"/>
-            <RowDefinition Height="60"/>
             <RowDefinition Height="60"/>
             <RowDefinition Height="60"/>
             <RowDefinition Height="60"/>
@@ -21,25 +20,22 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <DataGrid SelectedItem="{Binding ElementoSeleccionados}" Grid.Row = "0" ItemsSource="{Binding ListaAlumno}" 
+        <DataGrid SelectedItem="{Binding ElementoSeleccionado}" Grid.Row = "0" ItemsSource="{Binding ListaSalon}" 
             CanUserAddRows="False" ColumnWidth="*" AutoGenerateColumns="False" Grid.ColumnSpan="2">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding AlumnoId}" Header="ID" IsReadOnly="True" />
-                <DataGridTextColumn Binding="{Binding Carne}" Header="Carné" IsReadOnly="True" />
-                <DataGridTextColumn Binding="{Binding Apellidos}" Header="Apellidos" IsReadOnly="True" />
-                <DataGridTextColumn Binding="{Binding Nombres}" Header="Nombres" IsReadOnly="True" />
-                <DataGridTextColumn Binding="{Binding Email}" Header="Email" IsReadOnly="True" />
+                <DataGridTextColumn Binding="{Binding SalonId}" Header="ID" IsReadOnly="True" />
+                <DataGridTextColumn Binding="{Binding Capacidad}" Header="Capacidad" IsReadOnly="True" />
+                <DataGridTextColumn Binding="{Binding Descripcion}" Header="Descripción" IsReadOnly="True" />
+                <DataGridTextColumn Binding="{Binding NombreSalon}" Header="Nombre del Salón" IsReadOnly="True" />
             </DataGrid.Columns>
         </DataGrid>
 
-        <Label Grid.Row="1" Grid.Column="0" Content="Carné"/>
-        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding ElementoSeleccionados.Carne}"></TextBox>
-        <Label Grid.Row="2" Grid.Column="0" Content="Apellidos"/>
-        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding ElementoSeleccionados.Apellidos}"></TextBox>
-        <Label Grid.Row="3" Grid.Column="0" Content="Nombres"/>
-        <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding ElementoSeleccionados.Nombres}"></TextBox>
-        <Label Grid.Row="4" Grid.Column="0" Content="Email"/>
-        <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding ElementoSeleccionados.Email}"></TextBox>
+        <Label Grid.Row="1" Grid.Column="0" Content="Capacidad"/>
+        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding ElementoSeleccionado.Capacidad}"></TextBox>
+        <Label Grid.Row="2" Grid.Column="0" Content="Descripción"/>
+        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding ElementoSeleccionado.Descripcion}"></TextBox>
+        <Label Grid.Row="3" Grid.Column="0" Content="Nombre del Salón"/>
+        <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding ElementoSeleccionado.NombreSalon}"></TextBox>
 
         <StackPanel Grid.Row="5" Grid.ColumnSpan="2" Orientation="Horizontal" Margin="10" HorizontalAlignment="Center">
             <Button Margin="10" Padding="5"  Content="Crear Nuevo" Command="{Binding Instancia}" CommandParameter="Nuevo"/>

@@ -20,7 +20,7 @@
                     <MenuItem Header="Categorías">
                         <MenuItem Command="{Binding Instancia}" CommandParameter="Alumno" Header="Alumno"/>
                         <Separator/>
-                        <MenuItem Command="{Binding Instancia}" CommandParameter="CarreraTecnica" Header="Carrera Técnica"/>
+                        <MenuItem Command="{Binding Instancia}" CommandParameter="Salon" Header="Salón"/>
                         <Separator/>
                         <MenuItem Command="{Binding Instancia}" CommandParameter="Horario" Header="Horario"/>
                         <Separator/>

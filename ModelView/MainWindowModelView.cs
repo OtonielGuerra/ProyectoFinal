@@ -38,6 +38,10 @@ namespace ProyectoFinal.ModelView
             {
                 new AlumnoView().ShowDialog();
             }
+            if (parameter.Equals("Salon"))
+            {
+                new SalonView().ShowDialog();
+            }
         }
         public event PropertyChangedEventHandler PropertyChanged;
         public void NotificarCambio(string propiedad)
