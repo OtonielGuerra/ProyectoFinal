@@ -57,3 +57,9 @@ C:\Users\Otto Guerra\Downloads\Sábados ASP\ProyectoFinal\obj\Debug\netcoreapp3.
 C:\Users\Otto Guerra\Downloads\Sábados ASP\ProyectoFinal\obj\Debug\netcoreapp3.1\View\AlumnoView.baml
 C:\Users\Otto Guerra\Downloads\Sábados ASP\ProyectoFinal\obj\Debug\netcoreapp3.1\View\SalonView.g.cs
 C:\Users\Otto Guerra\Downloads\Sábados ASP\ProyectoFinal\obj\Debug\netcoreapp3.1\View\SalonView.baml
+C:\Users\Otto Guerra\Downloads\Sábados ASP\ProyectoFinal\obj\Debug\netcoreapp3.1\View\CarreraView.g.cs
+C:\Users\Otto Guerra\Downloads\Sábados ASP\ProyectoFinal\obj\Debug\netcoreapp3.1\View\CarreraView.baml
+C:\Users\Otto Guerra\Downloads\Sábados ASP\ProyectoFinal\obj\Debug\netcoreapp3.1\View\InstructorView.g.cs
+C:\Users\Otto Guerra\Downloads\Sábados ASP\ProyectoFinal\obj\Debug\netcoreapp3.1\View\InstructorView.baml
+C:\Users\Otto Guerra\Downloads\Sábados ASP\ProyectoFinal\obj\Debug\netcoreapp3.1\View\HorarioView.g.cs
+C:\Users\Otto Guerra\Downloads\Sábados ASP\ProyectoFinal\obj\Debug\netcoreapp3.1\View\HorarioView.baml

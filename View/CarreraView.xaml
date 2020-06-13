@@ -1,0 +1,40 @@
+<Window x:Class="ProyectoFinal.View.CarreraView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProyectoFinal"
+        mc:Ignorable="d"
+        Title="Ventana Salón" Height="300" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="80"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <DataGrid SelectedItem="{Binding ElementoSeleccionado}" Grid.Row = "0" ItemsSource="{Binding ListaCarrera}" 
+            CanUserAddRows="False" ColumnWidth="*" AutoGenerateColumns="False" Grid.ColumnSpan="2">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding CarreraId}" Header="ID" IsReadOnly="True" />
+                <DataGridTextColumn Binding="{Binding Nombre}" Header="Nombre de la Carrera" IsReadOnly="True" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Label Grid.Row="1" Grid.Column="0" Content="Nombre de la Carrera"/>
+        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding ElementoSeleccionado.Nombre}"></TextBox>
+
+        <StackPanel Grid.Row="5" Grid.ColumnSpan="2" Orientation="Horizontal" Margin="10" HorizontalAlignment="Center">
+            <Button Margin="10" Padding="5"  Content="Crear Nuevo" Command="{Binding Instancia}" CommandParameter="Nuevo"/>
+            <Button Margin="10" Padding="5" Content="Modificar" Command="{Binding Instancia}" CommandParameter="Modificar"/>
+            <Button Margin="10" Padding="5" Content="Eliminar" Command="{Binding Instancia}" CommandParameter="Eliminar"/>
+            <Button Margin="10" Padding="5" Content="Guardar" Command="{Binding Instancia}" CommandParameter="Guardar"/>
+            <Button Margin="10" Padding="5" Content="Cancelar" Command="{Binding Instancia}" CommandParameter="Cancelar"/>
+        </StackPanel>
+    </Grid>
+</Window>

@@ -22,11 +22,13 @@
                         <Separator/>
                         <MenuItem Command="{Binding Instancia}" CommandParameter="Salon" Header="Salón"/>
                         <Separator/>
-                        <MenuItem Command="{Binding Instancia}" CommandParameter="Horario" Header="Horario"/>
+                        <MenuItem Command="{Binding Instancia}" CommandParameter="Carrera" Header="Carrera Técnica"/>
                         <Separator/>
                         <MenuItem Command="{Binding Instancia}" CommandParameter="Instructor" Header="Instructor"/>
                         <Separator/>
                         <MenuItem Command="{Binding Instancia}" CommandParameter="Salon" Header="Salón"/>
+                        <Separator/>
+                        <MenuItem Command="{Binding Instancia}" CommandParameter="Horario" Header="Horario"/>
                     </MenuItem>
                     
                     <MenuItem Header="Login">

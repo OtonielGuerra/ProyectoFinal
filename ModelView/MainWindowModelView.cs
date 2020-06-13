@@ -42,6 +42,18 @@ namespace ProyectoFinal.ModelView
             {
                 new SalonView().ShowDialog();
             }
+            if (parameter.Equals("Carrera"))
+            {
+                new CarreraView().ShowDialog();
+            }
+            if (parameter.Equals("Instructor"))
+            {
+                new InstructorView().ShowDialog();
+            }
+            if (parameter.Equals("Horario"))
+            {
+                new HorarioView().ShowDialog();
+            }
         }
         public event PropertyChangedEventHandler PropertyChanged;
         public void NotificarCambio(string propiedad)

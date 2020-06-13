@@ -1,0 +1,70 @@
+<Window x:Class="ProyectoFinal.View.InstructorView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProyectoFinal"
+        mc:Ignorable="d"
+        Title="Ventana Salón" Height="500" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <DataGrid SelectedItem="{Binding ElementoSeleccionado}" Grid.Row = "0" ItemsSource="{Binding ListaInstructor}" 
+            CanUserAddRows="False" ColumnWidth="*" AutoGenerateColumns="False" Grid.ColumnSpan="2">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding InstructorId}" Header="ID" IsReadOnly="True" />
+                <DataGridTextColumn Binding="{Binding Apellidos}" Header="Apellidos" IsReadOnly="True" />
+                <DataGridTextColumn Binding="{Binding Nombres}" Header="Nombres" IsReadOnly="True" />
+                <DataGridTextColumn Binding="{Binding Comentario}" Header="Comentario" IsReadOnly="True" />
+                <DataGridTextColumn Binding="{Binding Direccion}" Header="Direccion" IsReadOnly="True" />
+                <DataGridTextColumn Binding="{Binding Estatus}" Header="Estatus" IsReadOnly="True" />
+                <DataGridTextColumn Binding="{Binding Foto}" Header="Foto" IsReadOnly="True" />
+                <DataGridTextColumn Binding="{Binding Telefono}" Header="Telefono" IsReadOnly="True" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Label Grid.Row="1" Grid.Column="0" Content="Apellidos"/>
+        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding ElementoSeleccionado.Apellidos}"></TextBox>
+
+        <Label Grid.Row="2" Grid.Column="0" Content="Nombres"/>
+        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding ElementoSeleccionado.Nombres}"></TextBox>
+
+        <Label Grid.Row="3" Grid.Column="0" Content="Comentario"/>
+        <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding ElementoSeleccionado.Comentario}"></TextBox>
+
+        <Label Grid.Row="4" Grid.Column="0" Content="Direccion"/>
+        <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding ElementoSeleccionado.Direccion}"></TextBox>
+
+        <Label Grid.Row="5" Grid.Column="0" Content="Estatus"/>
+        <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding ElementoSeleccionado.Estatus}"></TextBox>
+
+        <Label Grid.Row="6" Grid.Column="0" Content="Foto"/>
+        <TextBox Grid.Row="6" Grid.Column="1" Text="{Binding ElementoSeleccionado.Foto}"></TextBox>
+
+        <Label Grid.Row="7" Grid.Column="0" Content="Telefono"/>
+        <TextBox Grid.Row="7" Grid.Column="1" Text="{Binding ElementoSeleccionado.Telefono}"></TextBox>
+
+        <StackPanel Grid.Row="8" Grid.ColumnSpan="2" Orientation="Horizontal" Margin="10" HorizontalAlignment="Center">
+            <Button Margin="10" Padding="5"  Content="Crear Nuevo" Command="{Binding Instancia}" CommandParameter="Nuevo"/>
+            <Button Margin="10" Padding="5" Content="Modificar" Command="{Binding Instancia}" CommandParameter="Modificar"/>
+            <Button Margin="10" Padding="5" Content="Eliminar" Command="{Binding Instancia}" CommandParameter="Eliminar"/>
+            <Button Margin="10" Padding="5" Content="Guardar" Command="{Binding Instancia}" CommandParameter="Guardar"/>
+            <Button Margin="10" Padding="5" Content="Cancelar" Command="{Binding Instancia}" CommandParameter="Cancelar"/>
+        </StackPanel>
+    </Grid>
+</Window>
