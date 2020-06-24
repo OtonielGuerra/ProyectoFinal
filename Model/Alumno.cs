@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace ProyectoFinal.Model
@@ -9,5 +10,7 @@ namespace ProyectoFinal.Model
         public string Apellidos { get; set; }
         public string Nombres { get; set; }
         public string Email { get; set; }
+        public List<AsignacionAlumno> AsignacionAlumno { get; set; }
+
     }
 }

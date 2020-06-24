@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace ProyectoFinal.Model
 {
     public class Instructor
@@ -10,5 +12,6 @@ namespace ProyectoFinal.Model
         public string Estatus { get; set; }
         public string Foto { get; set; }
         public int Telefono { get; set; }
+        public List<Clase> Clases { get; set; }
     }
 }

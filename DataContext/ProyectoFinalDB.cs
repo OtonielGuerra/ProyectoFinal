@@ -19,6 +19,8 @@ namespace ProyectoFinal.DataContext
         public DbSet<Carrera> CarrerasTecnicas { get; set; }
         public DbSet<Instructor> Instructores { get; set; }
         public DbSet<Horario> Horarios { get; set; }
+        public DbSet<Clase> Clases { get; set; }
+        public DbSet<AsignacionAlumno> AsignacionAlumnos { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

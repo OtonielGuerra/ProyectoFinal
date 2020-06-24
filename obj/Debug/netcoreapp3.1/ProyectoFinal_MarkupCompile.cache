@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Otto Guerra\Downloads\Sábados ASP\ProyectoFinal\obj\Debug\netcoreapp3.1\
+c:\Users\Otto Guerra\Downloads\Sábados ASP\ProyectoFinal\obj\Debug\netcoreapp3.1\
 ProyectoFinal
 none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1
-C:\Users\Otto Guerra\Downloads\Sábados ASP\ProyectoFinal\App.xaml
-6-489905443
+c:\Users\Otto Guerra\Downloads\Sábados ASP\ProyectoFinal\App.xaml
+8473377470
 
-21319616451
-2151408123351
-MainWindow.xaml;View\AlumnoView.xaml;View\CarreraView.xaml;View\HorarioView.xaml;View\InstructorView.xaml;View\SalonView.xaml;
+28-655095118
+215-621000755
+MainWindow.xaml;View\AlumnoView.xaml;View\AsignacionAlumnosView.xaml;View\CarreraView.xaml;View\ClaseView.xaml;View\HorarioView.xaml;View\InstructorView.xaml;View\SalonView.xaml;
 
-False
+True
 

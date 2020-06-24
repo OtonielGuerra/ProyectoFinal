@@ -63,3 +63,7 @@ C:\Users\Otto Guerra\Downloads\Sábados ASP\ProyectoFinal\obj\Debug\netcoreapp3.
 C:\Users\Otto Guerra\Downloads\Sábados ASP\ProyectoFinal\obj\Debug\netcoreapp3.1\View\InstructorView.baml
 C:\Users\Otto Guerra\Downloads\Sábados ASP\ProyectoFinal\obj\Debug\netcoreapp3.1\View\HorarioView.g.cs
 C:\Users\Otto Guerra\Downloads\Sábados ASP\ProyectoFinal\obj\Debug\netcoreapp3.1\View\HorarioView.baml
+C:\Users\Otto Guerra\Downloads\Sábados ASP\ProyectoFinal\obj\Debug\netcoreapp3.1\View\ClaseView.g.cs
+C:\Users\Otto Guerra\Downloads\Sábados ASP\ProyectoFinal\obj\Debug\netcoreapp3.1\View\ClaseView.baml
+C:\Users\Otto Guerra\Downloads\Sábados ASP\ProyectoFinal\obj\Debug\netcoreapp3.1\View\AsignacionAlumnosView.g.cs
+C:\Users\Otto Guerra\Downloads\Sábados ASP\ProyectoFinal\obj\Debug\netcoreapp3.1\View\AsignacionAlumnosView.baml

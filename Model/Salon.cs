@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace ProyectoFinal.Model
 {
     public class Salon
@@ -6,5 +8,6 @@ namespace ProyectoFinal.Model
         public int Capacidad { get; set; }
         public string Descripcion { get; set; }
         public string NombreSalon { get; set; }
+        public List<Clase> Clases { get; set; }
     }
 }

@@ -1,0 +1,86 @@
+<Window x:Class="ProyectoFinal.View.ClaseView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProyectoFinal"
+        mc:Ignorable="d"
+        Title="Ventana Salón" Height="550" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <!-- <ComboBox x:Name="cmbClase" ItemsSource="{Binding ListaClase}" SelectedItem="{Binding ElementoSeleccionado}"
+            Height="20px" Width="100px" DisplayMemberPath="ClaseId"></ComboBox> -->
+
+        <DataGrid SelectedItem="{Binding ElementoSeleccionado}" Grid.Row = "0" ItemsSource="{Binding ListaClase}" 
+            CanUserAddRows="False" ColumnWidth="*" AutoGenerateColumns="False" Grid.ColumnSpan="2">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding ClaseId}" Header="ID" IsReadOnly="True" />
+                <DataGridTextColumn Binding="{Binding Ciclo}" Header="Ciclo" IsReadOnly="True" />
+                <DataGridTextColumn Binding="{Binding CupoMaximo}" Header="Cupo Máximo" IsReadOnly="True" />
+                <DataGridTextColumn Binding="{Binding CupoMinimo}" Header="Cupo Mínimo" IsReadOnly="True" />
+                <DataGridTextColumn Binding="{Binding Descripcion}" Header="Descripcion" IsReadOnly="True" />
+                <DataGridTextColumn Binding="{Binding CarreraId}" Header="CarreraId" IsReadOnly="True" />
+                <DataGridTextColumn Binding="{Binding HorarioId}" Header="HorarioId" IsReadOnly="True" />
+                <DataGridTextColumn Binding="{Binding InstructorId}" Header="InstructorId" IsReadOnly="True" />
+                <DataGridTextColumn Binding="{Binding SalonId}" Header="SalonId" IsReadOnly="True" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Label Grid.Row="1" Grid.Column="0" Content="Ciclo"/>
+        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding ElementoSeleccionado.Ciclo}"></TextBox>
+
+        <Label Grid.Row="2" Grid.Column="0" Content="CupoMaximo"/>
+        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding ElementoSeleccionado.CupoMaximo}"></TextBox>
+
+        <Label Grid.Row="3" Grid.Column="0" Content="CupoMinimo"/>
+        <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding ElementoSeleccionado.CupoMinimo}"></TextBox>
+
+        <Label Grid.Row="4" Grid.Column="0" Content="Descripcion"/>
+        <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding ElementoSeleccionado.Descripcion}"></TextBox>
+
+        <Label Grid.Row="5" Grid.Column="0" Content="CarreraId"/>
+        <TextBox Visibility="{Binding Mostrar}" Grid.Row="5" Grid.Column="1" Text="{Binding ElementoSeleccionado.CarreraId}"></TextBox>
+        <ComboBox Visibility="{Binding Crear}" Grid.Row="5" Grid.Column="1" x:Name="cmbCarrera" ItemsSource="{Binding ListaCarrera}" 
+            SelectedItem="{Binding CarreraSeleccionado}" DisplayMemberPath="CarreraId"></ComboBox>
+
+        <Label Grid.Row="6" Grid.Column="0" Content="HorarioId"/>
+        <TextBox Visibility="{Binding Mostrar}" Grid.Row="6" Grid.Column="1" Text="{Binding ElementoSeleccionado.HorarioId}"></TextBox>
+        <ComboBox Visibility="{Binding Crear}" Grid.Row="6" Grid.Column="1" x:Name="cmbHorario" ItemsSource="{Binding ListaHorario}" 
+            SelectedItem="{Binding HorarioSeleccionado}" DisplayMemberPath="HorarioId"></ComboBox>
+
+        <Label Grid.Row="7" Grid.Column="0" Content="InstructorId"/>
+        <TextBox Visibility="{Binding Mostrar}" Grid.Row="7" Grid.Column="1" Text="{Binding ElementoSeleccionado.InstructorId}"></TextBox>
+        <ComboBox Visibility="{Binding Crear}" Grid.Row="7" Grid.Column="1" x:Name="cmbInstructor" ItemsSource="{Binding ListaInstructor}" 
+            SelectedItem="{Binding InstructorSeleccionado}" DisplayMemberPath="InstructorId"></ComboBox>
+
+        <Label Grid.Row="8" Grid.Column="0" Content="SalonId"/>
+        <TextBox Visibility="{Binding Mostrar}" Grid.Row="8" Grid.Column="1" Text="{Binding ElementoSeleccionado.SalonId}"></TextBox>
+        <ComboBox Visibility="{Binding Crear}" Grid.Row="8" Grid.Column="1" x:Name="cmbSalon" ItemsSource="{Binding ListaSalon}" 
+            SelectedItem="{Binding SalonSeleccionado}" DisplayMemberPath="SalonId"></ComboBox>
+
+        <StackPanel Grid.Row="9" Grid.ColumnSpan="2" Orientation="Horizontal" Margin="10" HorizontalAlignment="Center">
+            <Button Margin="10" Padding="5"  Content="Crear Nuevo" Command="{Binding Instancia}" CommandParameter="Nuevo"/>
+            <Button Margin="10" Padding="5" Content="Modificar" Command="{Binding Instancia}" CommandParameter="Modificar"/>
+            <Button Margin="10" Padding="5" Content="Eliminar" Command="{Binding Instancia}" CommandParameter="Eliminar"/>
+            <Button Margin="10" Padding="5" Content="Guardar" Command="{Binding Instancia}" CommandParameter="Guardar"/>
+            <Button Margin="10" Padding="5" Content="Cancelar" Command="{Binding Instancia}" CommandParameter="Cancelar"/>
+        </StackPanel>
+    </Grid>
+</Window>

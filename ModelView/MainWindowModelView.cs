@@ -54,6 +54,14 @@ namespace ProyectoFinal.ModelView
             {
                 new HorarioView().ShowDialog();
             }
+            if (parameter.Equals("Clase"))
+            {
+                new ClaseView().ShowDialog();
+            }
+            if (parameter.Equals("Asignacion"))
+            {
+                new AsignacionAlumnosView().ShowDialog();
+            }
         }
         public event PropertyChangedEventHandler PropertyChanged;
         public void NotificarCambio(string propiedad)

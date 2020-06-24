@@ -29,6 +29,10 @@
                         <MenuItem Command="{Binding Instancia}" CommandParameter="Salon" Header="Salón"/>
                         <Separator/>
                         <MenuItem Command="{Binding Instancia}" CommandParameter="Horario" Header="Horario"/>
+                        <Separator/>
+                        <MenuItem Command="{Binding Instancia}" CommandParameter="Clase" Header="Clase"/>
+                        <Separator/>
+                        <MenuItem Command="{Binding Instancia}" CommandParameter="Asignacion" Header="Asignacion de Alumnos"/>
                     </MenuItem>
                     
                     <MenuItem Header="Login">

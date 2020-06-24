@@ -1,0 +1,55 @@
+<Window x:Class="ProyectoFinal.View.AsignacionAlumnosView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProyectoFinal"
+        mc:Ignorable="d"
+        Title="Ventana Salón" Height="400" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="80"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <DataGrid SelectedItem="{Binding ElementoSeleccionado}" Grid.Row = "0" ItemsSource="{Binding ListaAsignacion}" 
+            CanUserAddRows="False" ColumnWidth="*" AutoGenerateColumns="False" Grid.ColumnSpan="2">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding AsignacionId}" Header="ID" IsReadOnly="True" />
+                <DataGridTextColumn Binding="{Binding AlumnoId}" Header="ID del Alumno" IsReadOnly="True" />
+                <DataGridTextColumn Binding="{Binding ClaseId}" Header="ID de la Clase" IsReadOnly="True" />
+                <DataGridTextColumn Binding="{Binding FechaAsignacion}" Header="Fecha de Asignacion" IsReadOnly="True" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Label Grid.Row="1" Grid.Column="0" Content="ID del Alumno"/>
+        <!-- <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding ElementoSeleccionado.AlumnoId}"></TextBox> -->
+        <ComboBox Grid.Row="1" Grid.Column="1" x:Name="cmbAlumno" ItemsSource="{Binding ListaAlumno}" 
+            SelectedItem="{Binding AlumnoSeleccionados}" DisplayMemberPath="AlumnoId"></ComboBox>
+
+        <Label Grid.Row="2" Grid.Column="0" Content="ID de la Clase"/>
+        <!-- <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding ElementoSeleccionado.ClaseId}"></TextBox> -->
+        <ComboBox Grid.Row="2" Grid.Column="1" x:Name="cmbClase" ItemsSource="{Binding ListaClase}" 
+            SelectedItem="{Binding ClaseSeleccionado}" DisplayMemberPath="ClaseId"></ComboBox>
+
+        <Label Grid.Row="3" Grid.Column="0" Content="Fecha de Asignacion"/>
+        <!-- <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding ElementoSeleccionado.FechaAsignacion}"></TextBox> -->
+        <DatePicker Grid.Row="3" Grid.Column="1" SelectedDate="{Binding ElementoSeleccionado.FechaAsignacion}"/>
+
+        <StackPanel Grid.Row="4" Grid.ColumnSpan="2" Orientation="Horizontal" Margin="10" HorizontalAlignment="Center">
+            <Button Margin="10" Padding="5"  Content="Crear Nuevo" Command="{Binding Instancia}" CommandParameter="Nuevo"/>
+            <Button Margin="10" Padding="5" Content="Modificar" Command="{Binding Instancia}" CommandParameter="Modificar"/>
+            <Button Margin="10" Padding="5" Content="Eliminar" Command="{Binding Instancia}" CommandParameter="Eliminar"/>
+            <Button Margin="10" Padding="5" Content="Guardar" Command="{Binding Instancia}" CommandParameter="Guardar"/>
+            <Button Margin="10" Padding="5" Content="Cancelar" Command="{Binding Instancia}" CommandParameter="Cancelar"/>
+        </StackPanel>
+    </Grid>
+</Window>
