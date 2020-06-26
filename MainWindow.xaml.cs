@@ -13,13 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ProyectoFinal.ModelView;
+using MahApps.Metro.Controls;
 
 namespace ProyectoFinal
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : MetroWindow
     {
         private MainWindowModelView Modelo;
         public MainWindow()

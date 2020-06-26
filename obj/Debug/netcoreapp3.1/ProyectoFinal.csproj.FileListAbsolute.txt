@@ -67,3 +67,10 @@ C:\Users\Otto Guerra\Downloads\Sábados ASP\ProyectoFinal\obj\Debug\netcoreapp3.
 C:\Users\Otto Guerra\Downloads\Sábados ASP\ProyectoFinal\obj\Debug\netcoreapp3.1\View\ClaseView.baml
 C:\Users\Otto Guerra\Downloads\Sábados ASP\ProyectoFinal\obj\Debug\netcoreapp3.1\View\AsignacionAlumnosView.g.cs
 C:\Users\Otto Guerra\Downloads\Sábados ASP\ProyectoFinal\obj\Debug\netcoreapp3.1\View\AsignacionAlumnosView.baml
+C:\Users\Otto Guerra\Downloads\Sábados ASP\ProyectoFinal\obj\Debug\netcoreapp3.1\View\LoginView.g.cs
+C:\Users\Otto Guerra\Downloads\Sábados ASP\ProyectoFinal\obj\Debug\netcoreapp3.1\View\LoginView.baml
+C:\Users\Otto Guerra\Downloads\Sábados ASP\ProyectoFinal\bin\Debug\netcoreapp3.1\ControlzEx.dll
+C:\Users\Otto Guerra\Downloads\Sábados ASP\ProyectoFinal\bin\Debug\netcoreapp3.1\MahApps.Metro.dll
+C:\Users\Otto Guerra\Downloads\Sábados ASP\ProyectoFinal\bin\Debug\netcoreapp3.1\Microsoft.Xaml.Behaviors.dll
+C:\Users\Otto Guerra\Downloads\Sábados ASP\ProyectoFinal\bin\Debug\netcoreapp3.1\System.Text.Json.dll
+C:\Users\Otto Guerra\Downloads\Sábados ASP\ProyectoFinal\obj\Debug\netcoreapp3.1\App.baml

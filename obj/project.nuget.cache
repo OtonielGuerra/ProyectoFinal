@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "yrHfnQd4lIUqRn7Ww7TLd3tnsFyRRYES/nNBZf/5WkuMSfS3JCqINWQLx3Ox9L44DuWbAykTMv8cg+YYiBRYig==",
+  "dgSpecHash": "iL1POUjawjcU5LeiFwkrHA54hreC84Mjm14dtZuyIFUvzFGjcuxCkicjXVXLXkPWUhY8GqdfN6i/ROgrZcaqBA==",
   "success": true,
   "projectFilePath": "C:\\Users\\Otto Guerra\\Downloads\\Sábados ASP\\ProyectoFinal\\ProyectoFinal.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Otto Guerra\\.nuget\\packages\\controlzex\\4.3.0\\controlzex.4.3.0.nupkg.sha512",
+    "C:\\Users\\Otto Guerra\\.nuget\\packages\\mahapps.metro\\2.1.0\\mahapps.metro.2.1.0.nupkg.sha512",
     "C:\\Users\\Otto Guerra\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\Otto Guerra\\.nuget\\packages\\microsoft.bcl.hashcode\\1.1.0\\microsoft.bcl.hashcode.1.1.0.nupkg.sha512",
     "C:\\Users\\Otto Guerra\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
@@ -35,6 +37,7 @@
     "C:\\Users\\Otto Guerra\\.nuget\\packages\\microsoft.netcore.platforms\\2.0.0\\microsoft.netcore.platforms.2.0.0.nupkg.sha512",
     "C:\\Users\\Otto Guerra\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
     "C:\\Users\\Otto Guerra\\.nuget\\packages\\microsoft.win32.registry\\4.5.0\\microsoft.win32.registry.4.5.0.nupkg.sha512",
+    "C:\\Users\\Otto Guerra\\.nuget\\packages\\microsoft.xaml.behaviors.wpf\\1.1.19\\microsoft.xaml.behaviors.wpf.1.1.19.nupkg.sha512",
     "C:\\Users\\Otto Guerra\\.nuget\\packages\\runtime.native.system\\4.3.0\\runtime.native.system.4.3.0.nupkg.sha512",
     "C:\\Users\\Otto Guerra\\.nuget\\packages\\runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "C:\\Users\\Otto Guerra\\.nuget\\packages\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
@@ -89,6 +92,7 @@
     "C:\\Users\\Otto Guerra\\.nuget\\packages\\system.text.encoding\\4.3.0\\system.text.encoding.4.3.0.nupkg.sha512",
     "C:\\Users\\Otto Guerra\\.nuget\\packages\\system.text.encoding.codepages\\4.5.0\\system.text.encoding.codepages.4.5.0.nupkg.sha512",
     "C:\\Users\\Otto Guerra\\.nuget\\packages\\system.text.encoding.extensions\\4.3.0\\system.text.encoding.extensions.4.3.0.nupkg.sha512",
+    "C:\\Users\\Otto Guerra\\.nuget\\packages\\system.text.json\\4.7.2\\system.text.json.4.7.2.nupkg.sha512",
     "C:\\Users\\Otto Guerra\\.nuget\\packages\\system.text.regularexpressions\\4.3.0\\system.text.regularexpressions.4.3.0.nupkg.sha512",
     "C:\\Users\\Otto Guerra\\.nuget\\packages\\system.threading\\4.3.0\\system.threading.4.3.0.nupkg.sha512",
     "C:\\Users\\Otto Guerra\\.nuget\\packages\\system.threading.tasks\\4.3.0\\system.threading.tasks.4.3.0.nupkg.sha512",
