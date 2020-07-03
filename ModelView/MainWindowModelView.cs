@@ -33,6 +33,18 @@ namespace ProyectoFinal.ModelView
             }
         }
 
+        private bool _IsLogin = true;
+
+        public bool IsLogin
+        {
+            get { return _IsLogin; }
+            set 
+            { 
+                _IsLogin = value; 
+                NotificarCambio("IsLogin");
+            }
+        }
+
         private Usuario _Usuario;
         public Usuario Usuario
         {
@@ -41,6 +53,17 @@ namespace ProyectoFinal.ModelView
             { 
                 _Usuario = value;
                 NotificarCambio("Usuario");
+            }
+        }
+
+        private string _ImgFoto = $"{Environment.CurrentDirectory}\\Imagenes\\tecla.jpg";
+        public string ImgFoto
+        {
+            get { return _ImgFoto; }
+            set 
+            {
+                _ImgFoto = value;
+                NotificarCambio("ImgFoto");
             }
         }
         

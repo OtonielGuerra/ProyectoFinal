@@ -1,11 +1,14 @@
-<Window x:Class="ProyectoFinal.View.AsignacionAlumnosView"
+<mah:MetroWindow x:Class="ProyectoFinal.View.AsignacionAlumnosView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoFinal"
+        xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:Dialog="clr-namespace:MahApps.Metro.Controls.Dialogs;assembly=MahApps.Metro"
+                 Dialog:DialogParticipation.Register="{Binding}"
         mc:Ignorable="d"
-        Title="Ventana Salón" Height="400" Width="800">
+        Title="Ventana Asignación" Height="400" Width="800">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="100"/>
@@ -45,11 +48,11 @@
         <DatePicker Grid.Row="3" Grid.Column="1" SelectedDate="{Binding ElementoSeleccionado.FechaAsignacion}"/>
 
         <StackPanel Grid.Row="4" Grid.ColumnSpan="2" Orientation="Horizontal" Margin="10" HorizontalAlignment="Center">
-            <Button Margin="10" Padding="5"  Content="Crear Nuevo" Command="{Binding Instancia}" CommandParameter="Nuevo"/>
-            <Button Margin="10" Padding="5" Content="Modificar" Command="{Binding Instancia}" CommandParameter="Modificar"/>
-            <Button Margin="10" Padding="5" Content="Eliminar" Command="{Binding Instancia}" CommandParameter="Eliminar"/>
-            <Button Margin="10" Padding="5" Content="Guardar" Command="{Binding Instancia}" CommandParameter="Guardar"/>
-            <Button Margin="10" Padding="5" Content="Cancelar" Command="{Binding Instancia}" CommandParameter="Cancelar"/>
+            <Button IsEnabled="{Binding Ver}" Margin="10" Padding="5"  Content="Crear Nuevo" Command="{Binding Instancia}" CommandParameter="Nuevo"/>
+            <Button IsEnabled="{Binding Ver}" Margin="10" Padding="5" Content="Modificar" Command="{Binding Instancia}" CommandParameter="Modificar"/>
+            <Button IsEnabled="{Binding Ver}" Margin="10" Padding="5" Content="Eliminar" Command="{Binding Instancia}" CommandParameter="Eliminar"/>
+            <Button IsEnabled="{Binding Crear}" Margin="10" Padding="5" Content="Guardar" Command="{Binding Instancia}" CommandParameter="Guardar"/>
+            <Button IsEnabled="{Binding Crear}" Margin="10" Padding="5" Content="Cancelar" Command="{Binding Instancia}" CommandParameter="Cancelar"/>
         </StackPanel>
     </Grid>
-</Window>
+</mah:MetroWindow>

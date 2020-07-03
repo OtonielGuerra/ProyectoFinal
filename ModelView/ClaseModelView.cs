@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
+using MahApps.Metro.Controls.Dialogs;
 using Microsoft.EntityFrameworkCore;
 using ProyectoFinal.DataContext;
 using ProyectoFinal.Model;
@@ -134,8 +135,10 @@ namespace ProyectoFinal.ModelView
         // ------------------------------------ //
         // --------------- * Constructor * --------------- //
         private ProyectoFinalDB dbContext;
-        public ClaseModelView()
+        private IDialogCoordinator dialogCoordinator;
+        public ClaseModelView(IDialogCoordinator instance)
         {
+            this.dialogCoordinator = instance;
             this.dbContext = new ProyectoFinalDB();
             this.Instancia = this;
         }
@@ -148,7 +151,7 @@ namespace ProyectoFinal.ModelView
             return true;
         }
 
-        public void Execute(object parameter)
+        public async void Execute(object parameter)
         {
             // --------------- * Nuevo * --------------- //
             if (parameter.Equals("Nuevo"))
@@ -158,7 +161,9 @@ namespace ProyectoFinal.ModelView
 
                 this.ElementoSeleccionado = new Clase();
                 this._Accion = ACCION.NUEVO;
-                MessageBox.Show("Ingrese el nuevo registro, porfavor", "Registro");
+                await this.dialogCoordinator.ShowMessageAsync(this, "Registro", "Ingrese el nuevo regitro");
+                Crear1 = true;
+                Ver = false;
             }
             // --------------- * Modificar * --------------- //
             else if (parameter.Equals("Modificar"))
@@ -177,10 +182,12 @@ namespace ProyectoFinal.ModelView
                     this.ClaseUpdate.HorarioId = this.ElementoSeleccionado.HorarioId;
                     this.ClaseUpdate.InstructorId = this.ElementoSeleccionado.InstructorId;
                     this.ClaseUpdate.SalonId = this.ElementoSeleccionado.SalonId;
+                    Crear1 = true;
+                    Ver = false;
                 }
                 else
                 {
-                    MessageBox.Show("Elija un elemento a modificar", "Modificar");
+                    await this.dialogCoordinator.ShowMessageAsync(this, "Modificar", "Elija un elemento a modificar");
                 }
             }
             // ------------------- * ELIMINAR * ------------------------- //
@@ -195,16 +202,16 @@ namespace ProyectoFinal.ModelView
 
                         this.ListaClase.Remove(this.ElementoSeleccionado);
 
-                        MessageBox.Show("Datos Eliminados Exitosamente");
+                        await this.dialogCoordinator.ShowMessageAsync(this, "Eliminado", "Datos eliminados exitosamente");
                     }
                     catch (Exception e)
                     {
-                        MessageBox.Show($"Excepción econtrada: {e}");
+                        await this.dialogCoordinator.ShowMessageAsync(this, "Excepción Encontrada", $"{e}");
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Debes seleccionar un elemento para borrar");
+                    await this.dialogCoordinator.ShowMessageAsync(this, "Seleccionar un elemento", "Debe seleccionar un elemento para eliminarlo");
                 }
             }
             // --------------- * Guardar * --------------- //
@@ -224,13 +231,13 @@ namespace ProyectoFinal.ModelView
                             this.dbContext.SaveChanges();
 
                             this.ListaClase.Add(this.ElementoSeleccionado);
-                            MessageBox.Show("Datos Guardados Exitosamente");
+                            await this.dialogCoordinator.ShowMessageAsync(this, "Guardado", "Datos Guardados con Éxito");
 
                             VerElemento();
                         }
                         catch (System.Exception e)
                         {
-                            MessageBox.Show("Excepción encontrada: " + e, "Excepción");
+                            await this.dialogCoordinator.ShowMessageAsync(this, "Excepción encontrada", $"{e}");
                             throw;
                         }
                     break;
@@ -241,22 +248,24 @@ namespace ProyectoFinal.ModelView
                             {
                                 this.dbContext.Entry(ElementoSeleccionado).State = EntityState.Modified;
                                 this.dbContext.SaveChanges();
-                                MessageBox.Show("Modificado con éxito");
+                                await this.dialogCoordinator.ShowMessageAsync(this, "Modificado", "Registro modificado con Éxito");
                             }
                             else 
                             {
-                                MessageBox.Show("Debe ingresar la información que quiera actualizar");
+                                await this.dialogCoordinator.ShowMessageAsync(this, "Espere", "Debe ingresar la información que quiera ctualizar");
                             }
                         }
                         catch (System.Exception e)
                         {
-                            MessageBox.Show("Excepción encontrada: " + e, "Excepción");
+                            await this.dialogCoordinator.ShowMessageAsync(this, "Excepción encontrada", $"{e}");
                             throw;
                         }
                     break;
                     default:
                     break;
                 }
+                Crear1 = false;
+                Ver = true;
             }
             // ------------------- * CANCELAR * ------------------------- //
             else if(parameter.Equals("Cancelar"))
@@ -270,6 +279,8 @@ namespace ProyectoFinal.ModelView
                 }
                 this._Accion = ACCION.NINGUNO;
                 VerElemento();
+                Crear1 = false;
+                Ver = true;
             }
         }
         // --------------------------------------------- //
@@ -463,6 +474,28 @@ namespace ProyectoFinal.ModelView
             this.Crear = Visibility.Hidden;
             this.Mostrar = Visibility.Visible;
             
+        }
+        #endregion
+        #region * Switch *
+        private bool _Crear1 = false;
+        public bool Crear1
+        {
+            get { return _Crear1; }
+            set 
+            { 
+                _Crear1 = value;
+                NotificarCambio("Crear1");
+            }
+        }
+        private bool _Ver = true;
+        public bool Ver
+        {
+            get { return _Ver; }
+            set 
+            { 
+                _Ver = value;
+                NotificarCambio("Ver");
+            }
         }
         #endregion
     }

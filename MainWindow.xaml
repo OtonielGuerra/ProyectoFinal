@@ -12,7 +12,6 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Center" >
@@ -38,7 +37,7 @@
                         <MenuItem Command="{Binding Instancia}" CommandParameter="Asignacion" Header="Asignacion de Alumnos"/>
                     </MenuItem>
                     
-                    <MenuItem Header="Login">
+                    <MenuItem IsEnabled="{Binding IsLogin}" Header="Login">
                         <MenuItem Command="{Binding Instancia}" CommandParameter="Login" Header="Iniciar Sesión"/>
                     </MenuItem>
 
@@ -55,5 +54,7 @@
                 </MenuItem>
             </Menu>
         </StackPanel>
+
+        <Image Grid.Row="1" Source="{Binding ImgFoto}" Stretch="fill" />
     </Grid>
 </mah:MetroWindow>

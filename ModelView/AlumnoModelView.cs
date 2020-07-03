@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
+using MahApps.Metro.Controls.Dialogs;
 using Microsoft.EntityFrameworkCore;
 using ProyectoFinal.DataContext;
 using ProyectoFinal.Model;
@@ -18,8 +19,10 @@ namespace ProyectoFinal.ModelView
             NUEVO,
             MODIFICAR
         }
-        public AlumnoModelView()
+        private IDialogCoordinator dialogCoordinator;
+        public AlumnoModelView(IDialogCoordinator instance)
         {
+            this.dialogCoordinator = instance;
             this.Instancia = this;
             this.dbContext = new ProyectoFinalDB();
         }
@@ -68,6 +71,28 @@ namespace ProyectoFinal.ModelView
                 NotificarCambio("ElementoSeleccionados");
             }
         }
+        private bool _Crear = false;
+        public bool Crear
+        {
+            get { return _Crear; }
+            set 
+            { 
+                _Crear = value;
+                NotificarCambio("Crear");
+            }
+        }
+        private bool _Ver = true;
+        public bool Ver
+        {
+            get { return _Ver; }
+            set 
+            { 
+                _Ver = value;
+                NotificarCambio("Ver");
+            }
+        }
+        
+        
         public ObservableCollection<Alumno> _ListaAlumno;
 
         public ObservableCollection<Alumno> ListaAlumno { 
@@ -98,14 +123,16 @@ namespace ProyectoFinal.ModelView
             return true;
         }
 
-        public void Execute(object parameter)
+        public async void Execute(object parameter)
         {
             // ------------------- * NUEVO * ------------------------- //
             if(parameter.Equals("Nuevo"))
             {
                 this.ElementoSeleccionados = new Alumno();
                 this._Accion = ACCION.NUEVO;
-                MessageBox.Show("Ingrese el nuevo registro, por favor", "Registro");
+                await this.dialogCoordinator.ShowMessageAsync(this, "Registro", "Ingrese el nuevo regitro");
+                Crear = true;
+                Ver = false;
             }
             // ------------------- * MODIFICAR * ------------------------- //
             else if(parameter.Equals("Modificar"))
@@ -120,11 +147,13 @@ namespace ProyectoFinal.ModelView
                     this.Update.Apellidos = this.ElementoSeleccionados.Apellidos;
                     this.Update.Nombres = this.ElementoSeleccionados.Nombres;
                     this.Update.Email = this.ElementoSeleccionados.Email;
+                    Crear = true;
+                    Ver = false;
 
                 }
                 else
                 {
-                    MessageBox.Show("Elija un elemento a modificar", "Modificar");
+                    await this.dialogCoordinator.ShowMessageAsync(this, "Modificar", "Elija un elemento a modificar");
                 }
             }
             // ------------------- * ELIMINAR * ------------------------- //
@@ -139,16 +168,16 @@ namespace ProyectoFinal.ModelView
 
                         this.ListaAlumno.Remove(this.ElementoSeleccionados);
 
-                        MessageBox.Show("Datos Eliminados Exitosamente");
+                        await this.dialogCoordinator.ShowMessageAsync(this, "Eliminado", "Datos eliminados exitosamente");
                     }
                     catch (Exception e)
                     {
-                        MessageBox.Show($"Excepción econtrada: {e}");
+                        await this.dialogCoordinator.ShowMessageAsync(this, "Excepción Encontrada", $"{e}");
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Debes seleccionar un elemento para borrar");
+                    await this.dialogCoordinator.ShowMessageAsync(this, "Seleccionar un elemento", "Debe seleccionar un elemento para eliminarlo");
                 }
             }
             // ------------------- * GUARDAR * ------------------------- //
@@ -164,11 +193,11 @@ namespace ProyectoFinal.ModelView
                             //this.dbContext.Alumnos.Update(this.ElementoSeleccionados); También es Funcional
                             this.dbContext.SaveChanges();
 
-                            MessageBox.Show("Modificado con éxito");
+                            await this.dialogCoordinator.ShowMessageAsync(this, "Modificado", "Registro modificado con Éxito");
                         }
                         else 
                         {
-                            MessageBox.Show("Debe ingresar la información que quiera actualizar");
+                            await this.dialogCoordinator.ShowMessageAsync(this, "Espere", "Debe ingresar la información que quiera ctualizar");
                         }
                     break;
                     case ACCION.NUEVO:
@@ -178,16 +207,18 @@ namespace ProyectoFinal.ModelView
                             this.dbContext.SaveChanges();
 
                             this.ListaAlumno.Add(this.ElementoSeleccionados);
-                            MessageBox.Show("Datos Guardados Exitosamente");
+                            await this.dialogCoordinator.ShowMessageAsync(this, "Guardado", "Datos Guardados con Éxito");
                         }
                         catch (Exception e)
                         {
-                            MessageBox.Show($"Excepción econtrada: {e}", "Excepción");
+                            await this.dialogCoordinator.ShowMessageAsync(this, "Excepción encontrada", $"{e}");
                         }
                     break;
                     default:
                     break;
                 }
+                Crear = false;
+                Ver = true;
             }
             // ------------------- * CANCELAR * ------------------------- //
             else if(parameter.Equals("Cancelar"))
@@ -200,6 +231,8 @@ namespace ProyectoFinal.ModelView
                     this.ListaAlumno.Insert(this.Posicion, this.Update);
                 }
                 this._Accion = ACCION.NINGUNO;
+                Crear = false;
+                Ver = true;
             }
         }
         

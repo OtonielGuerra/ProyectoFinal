@@ -4,6 +4,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using MahApps.Metro.Controls.Dialogs;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using ProyectoFinal.DataContext;
@@ -13,6 +14,7 @@ namespace ProyectoFinal.ModelView
 {
     public class LoginModelView : INotifyPropertyChanged, ICommand
     {
+        private IDialogCoordinator dialogCoordinator;
         private MainWindowModelView _MainViewModel;
         public MainWindowModelView MainViewModel
         {
@@ -70,12 +72,13 @@ namespace ProyectoFinal.ModelView
         }
         #endregion
 
-        public LoginModelView(Usuario usuario, MainWindowModelView mainViewModel)
+        public LoginModelView(Usuario usuario, MainWindowModelView mainViewModel, IDialogCoordinator instance)
         {
+            this.dialogCoordinator = instance;
             this.MainViewModel = mainViewModel;
             this.Usuario = usuario;
             this.Instancia = this;       
-            this._DbContext = new ProyectoFinalDB();     
+            this._DbContext = new ProyectoFinalDB();
         }
         public event PropertyChangedEventHandler PropertyChanged;
         public event EventHandler CanExecuteChanged;
@@ -85,7 +88,7 @@ namespace ProyectoFinal.ModelView
             return true;
         }
 
-        public void Execute(object parameter)
+        public async void Execute(object parameter)
         {
             if (parameter is Window)
             {
@@ -104,14 +107,17 @@ namespace ProyectoFinal.ModelView
                     }
                     if (Usuario != null)
                     {
-                        MessageBox.Show($"Bienvenido {_Usuario.Apellido} {_Usuario.Nombre}");
+                        await this.dialogCoordinator.ShowMessageAsync(this, "Bienvenido", $"Bienvenido {_Usuario.Apellido}" +
+                            $" {_Usuario.Nombre}");
                         this.MainViewModel.IsMenuCatalogo = true;
+                        this.MainViewModel.IsLogin = false;
                         this.MainViewModel.Usuario = this.Usuario;
                         ((Window)parameter).Close();
 
                     }else
                     {
-                        MessageBox.Show($"Usuario o Contraseña Incorrecctos");
+                        await this.dialogCoordinator.ShowMessageAsync(this, "Advertencia", 
+                            $"Usuario o Contraseña Incorrecctos");
                     }
                 }
                 catch (System.Exception e)

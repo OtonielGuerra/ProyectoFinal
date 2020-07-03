@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
+using MahApps.Metro.Controls.Dialogs;
 using Microsoft.EntityFrameworkCore;
 using ProyectoFinal.DataContext;
 using ProyectoFinal.Model;
@@ -109,8 +110,10 @@ namespace ProyectoFinal.ModelView
         // ------------------------------------ //
         // --------------- * Constructor * --------------- //
         private ProyectoFinalDB dbContext;
-        public AsignacionAlumnoModelView()
+        private IDialogCoordinator dialogCoordinator;
+        public AsignacionAlumnoModelView(IDialogCoordinator instance)
         {
+            this.dialogCoordinator = instance;
             this.dbContext = new ProyectoFinalDB();
             this.Instancia = this;
         }
@@ -136,7 +139,7 @@ namespace ProyectoFinal.ModelView
             return true;
         }
 
-        public void Execute(object parameter)
+        public async void Execute(object parameter)
         {
             // --------------- * Nuevo * --------------- //
             if (parameter.Equals("Nuevo"))
@@ -144,12 +147,10 @@ namespace ProyectoFinal.ModelView
                 this.ElementoSeleccionado = new AsignacionAlumno();
 
                 this._Accion = ACCION.NUEVO;
-                MessageBox.Show("Ingrese el nuevo registro, porfavor", "Registro");
+                await this.dialogCoordinator.ShowMessageAsync(this, "Registro", "Ingrese el nuevo regitro");
+                Crear = true;
+                Ver = false;
 
-                MessageBox.Show(
-                                $"Alumno :{this.ElementoSeleccionado.AlumnoId} \n " + 
-                                $"Clase :{this.ElementoSeleccionado.ClaseId} \n "+
-                                $"Fecha Asignacion :{this.ElementoSeleccionado.FechaAsignacion}", "Datos");
             }
             // --------------- * Modificar * --------------- //
             else if (parameter.Equals("Modificar"))
@@ -163,10 +164,12 @@ namespace ProyectoFinal.ModelView
                     this.AsignacionUpdate.AlumnoId = this.ElementoSeleccionado.AlumnoId;
                     this.AsignacionUpdate.ClaseId = this.ElementoSeleccionado.ClaseId;
                     this.AsignacionUpdate.FechaAsignacion = this.ElementoSeleccionado.FechaAsignacion;
+                    Crear = true;
+                    Ver = false;
                 }
                 else
                 {
-                    MessageBox.Show("Elija un elemento a modificar", "Modificar");
+                    await this.dialogCoordinator.ShowMessageAsync(this, "Modificar", "Elija un elemento a modificar");
                 }
             }
             // ------------------- * ELIMINAR * ------------------------- //
@@ -181,16 +184,16 @@ namespace ProyectoFinal.ModelView
 
                         this.ListaAsignacion.Remove(this.ElementoSeleccionado);
 
-                        MessageBox.Show("Datos Eliminados Exitosamente");
+                        await this.dialogCoordinator.ShowMessageAsync(this, "Eliminado", "Datos eliminados exitosamente");
                     }
                     catch (Exception e)
                     {
-                        MessageBox.Show($"Excepción econtrada: {e}");
+                        await this.dialogCoordinator.ShowMessageAsync(this, "Excepción Encontrada", $"{e}");
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Debes seleccionar un elemento para borrar");
+                    await this.dialogCoordinator.ShowMessageAsync(this, "Seleccionar un elemento", "Debe seleccionar un elemento para eliminarlo");
                 }
             }
             // --------------- * Guardar * --------------- //
@@ -204,20 +207,15 @@ namespace ProyectoFinal.ModelView
                             this.ElementoSeleccionado.AlumnoId = AlumnoSeleccionados.AlumnoId;
                             this.ElementoSeleccionado.ClaseId = ClaseSeleccionado.ClaseId;
 
-                            MessageBox.Show(
-                                $"Alumno :{this.ElementoSeleccionado.AlumnoId} \n" + 
-                                $"Clase :{this.ElementoSeleccionado.ClaseId} \n"+
-                                $"Fecha Asignacion :{this.ElementoSeleccionado.FechaAsignacion}", "Datos");
-
                             this.dbContext.AsignacionAlumnos.Add(this.ElementoSeleccionado);
                             this.dbContext.SaveChanges();
 
                             this.ListaAsignacion.Add(this.ElementoSeleccionado);
-                            MessageBox.Show("Datos Guardados Exitosamente");
+                            await this.dialogCoordinator.ShowMessageAsync(this, "Guardado", "Datos Guardados con Éxito");
                         }
                         catch (System.Exception e)
                         {
-                            MessageBox.Show("Excepción encontrada: " + e, "Excepción 0000");
+                            await this.dialogCoordinator.ShowMessageAsync(this, "Excepción encontrada", $"{e}");
                             throw;
                         }
                     break;
@@ -228,22 +226,24 @@ namespace ProyectoFinal.ModelView
                             {
                                 this.dbContext.Entry(ElementoSeleccionado).State = EntityState.Modified;
                                 this.dbContext.SaveChanges();
-                                MessageBox.Show("Modificado con éxito");
+                                await this.dialogCoordinator.ShowMessageAsync(this, "Modificado", "Registro modificado con Éxito");
                             }
                             else 
                             {
-                                MessageBox.Show("Debe ingresar la información que quiera actualizar");
+                                await this.dialogCoordinator.ShowMessageAsync(this, "Espere", "Debe ingresar la información que quiera actualizar");
                             }
                         }
                         catch (System.Exception e)
                         {
-                            MessageBox.Show("Excepción encontrada: " + e, "Excepción");
+                            await this.dialogCoordinator.ShowMessageAsync(this, "Excepción encontrada", $"{e}");
                             throw;
                         }
                     break;
                     default:
                     break;
                 }
+                Crear = false;
+                Ver = true;
             }
             // ------------------- * CANCELAR * ------------------------- //
             else if(parameter.Equals("Cancelar"))
@@ -256,6 +256,8 @@ namespace ProyectoFinal.ModelView
                     this.ListaAsignacion.Insert(this.Posicion, this.AsignacionUpdate);
                 }
                 this._Accion = ACCION.NINGUNO;
+                Crear = false;
+                Ver = true;
             }
         }
         // --------------------------------------------- //
@@ -337,6 +339,28 @@ namespace ProyectoFinal.ModelView
             }
         }
         // ------------------------------------ //
+        #endregion
+        #region * Switch *
+        private bool _Crear = false;
+        public bool Crear
+        {
+            get { return _Crear; }
+            set 
+            { 
+                _Crear = value;
+                NotificarCambio("Crear");
+            }
+        }
+        private bool _Ver = true;
+        public bool Ver
+        {
+            get { return _Ver; }
+            set 
+            { 
+                _Ver = value;
+                NotificarCambio("Ver");
+            }
+        }
         #endregion
     }
 }

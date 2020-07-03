@@ -6,6 +6,8 @@
         xmlns:local="clr-namespace:ProyectoFinal"
         mc:Ignorable="d"
         xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:Dialog="clr-namespace:MahApps.Metro.Controls.Dialogs;assembly=MahApps.Metro"
+                 Dialog:DialogParticipation.Register="{Binding}"
         Title="Ventana Login" Height="450" Width="800"
         WindowStartupLocation="CenterScreen" Name="FormularioLogin">
         
@@ -24,11 +26,11 @@
                 </Label>
                 <PasswordBox x:Name="txtPassword" Foreground="Black" FontSize="18"/>
                 <Button Content="Entrar" 
-                    Margin="60 10"
+                    Margin="60 10" FontSize="18"
                     Command="{Binding Instancia}" 
                     CommandParameter="{Binding ElementName=FormularioLogin}"
-                    Background="#1979A9"
-                    Foreground="Black" Height="50"/>
+                    Background="#5A5A5A"
+                    Foreground="White" Height="50"/>
             </StackPanel>
         </Border>
 </mah:MetroWindow>
